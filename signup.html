@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function passmatch()
+            {
+                var pswd1 = document.getElementById("pwd1").value;
+                var pswd2 = document.getElementById("pwd2").value;
+                if(pswd1!=pswd2)
+                {
+                    document.getElementById("pwd2").value="";
+                    alert("passwords don't match");
+                    
+                }
+            }
+            function emailmatch()
+            {
+                var email = document.getElementById("email").value;
+                var re = /^[a-zA-Z][a-zA-Z0-9.]{5,}@[a-z]{3,}\.[a-z]{3}/;
+                if(!email.match(re))
+                {
+                    alert("email not in correct format");
+                    document.getElementById("email").value="";
+                }
+            }
+            function namematch()
+            {
+                var name = document.getElementById("uname").value;
+                var re = /^[a-zA-Z ]{3,}$/;
+                if(!name.match(re))
+                {
+                    alert("name must contain only alphabets");
+                    document.getElementById("uname").value="";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form action="signup.php" method="POST">
+		<h1 style="text-align:center;"> REGISTRATION FORM </h1>
+		<table align=center>
+		<tr>
+			<td>name:</td>
+			<td><input type="text" name="uname"  id="uname" onblur="namematch()" required></td>
+		</tr>
+                <tr>
+			<td>password:</td>
+			<td><input type="password" name="pwd1" id="pwd1" required></td>
+		</tr>
+                <tr>
+			<td>confirm password:</td>
+			<td><input type="password" name="pwd2" id="pwd2"  onblur="passmatch()" required></td>
+		</tr>
+		<tr>
+			<td>email:</td>
+			<td><input type="text" name="email" id="email" onblur="emailmatch()" required></td>
+		</tr>
+		<tr>
+			<td>gender:</td>
+			<td> <input type="radio" name="gender" value="M" required> male
+			     <input type="radio" name="gender" value="F" required> female </td>
+		</tr>
+		<tr>
+			<td>location:</td>
+			<td> <select name="location">
+			<option name="location" value="hyderabad"> HYDERABAD </OPTION>
+			<option name="location" value="warangal"> WARANGAL </OPTION>
+			<option name="location" value="vizag"> VIZAG </OPTION>
+		</select></td>
+		</tr>
+                <tr>
+                    <td rowspan=2><input type="submit" value="SignUp"></td>
+                </tr>
+		</table>
+		</form>			
+    </body>
+</html>
